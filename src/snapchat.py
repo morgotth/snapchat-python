@@ -164,8 +164,8 @@ class Snapchat(object):
         else:
             r = requests.post(url, data, headers=headers)
 
-        # If the status code isn't 200, it's a failed request.
-        if r.status_code != 200:
+        # If the status code isn't valid, it's a failed request.
+        if r.status_code not in (200, 202):
             if False:
                 print 'Post returned code: ', r.status_code, 'for request', endpoint, data
                 print 'Error content:'
