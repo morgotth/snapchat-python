@@ -362,13 +362,14 @@ class Snapchat(object):
         result = self.post('/send', data, params)
         return result != False
 
-    def add_story(self, media_id, time=10):
+    def add_story(self, media_id, media_type, time=10):
         """Add a story to your stories.
 
         You must have uploaded the video or image using upload() to get the media_id.
 
         :param media_id: The unique id for the media.
         :param time: Viewing time for the Snap (in seconds).
+        :param media_type: The type of content being uploaded, i.e. Snapchat.MEDIA_VIDEO.
         """
         if not self.logged_in:
             return False
@@ -382,7 +383,7 @@ class Snapchat(object):
             'timestamp': timestamp,
             'username': self.username,
             'caption_text_display': '#YOLO',
-            'type': 0,
+            'type': media_type,
         }
 
         params = [
